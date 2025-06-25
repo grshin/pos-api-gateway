@@ -6,10 +6,17 @@ spring:
     gateway:
       routes:
         - id: pos-order-service
-          uri: http://order-service:8081
+          uri: http://order-service:8080
           predicates:
             - Path=/api/orders/**
         - id: pos-inventory-service
-          uri: http://inventory-service:8082
+          uri: http://inventory-service:8080
           predicates:
             - Path=/api/inventory/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-server:8761/eureka
+    register-with-eureka: true
+    fetch-registry: true
